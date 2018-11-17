@@ -1,8 +1,3 @@
-# medical_health_patient
+# Medical Health - Patient
 
-A new Flutter application.
-
-## Getting Started
-
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
+### [Documentation](https://github.com/blackbelt-cda/MedicalHealth-Documentation).
