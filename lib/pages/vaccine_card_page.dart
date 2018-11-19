@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 
 class VaccineCardPage extends StatefulWidget {
   @override
@@ -8,8 +9,18 @@ class VaccineCardPage extends StatefulWidget {
 class _VaccineCardPageState extends State<VaccineCardPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Cartao de Vacina'),
+        actions: [
+          IconButton(
+            onPressed: (){},
+            tooltip: 'Codigo QR',
+            icon: Icon(Icons.gradient),
+          ),
+        ],
+      ),
+      body: ,
     );
   }
 }

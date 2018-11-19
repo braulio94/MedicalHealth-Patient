@@ -3,25 +3,6 @@ import 'package:flutter/material.dart';
 class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
-    final registerButton = Padding(
-      padding: EdgeInsets.symmetric(vertical: 16.0),
-      child: Material(
-        borderRadius: BorderRadius.circular(30.0),
-        shadowColor: Colors.lightBlueAccent.shade100,
-        elevation: 5.0,
-        child: MaterialButton(
-          minWidth: 200.0,
-          height: 42.0,
-          onPressed: () {
-
-          },
-          color: Colors.lightBlueAccent,
-          child: Text('Registrar', style: TextStyle(color: Colors.white)),
-        ),
-      ),
-    );
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
@@ -60,7 +41,23 @@ class RegisterPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 24.0),
-            registerButton,
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 16.0),
+              child: Material(
+                borderRadius: BorderRadius.circular(30.0),
+                shadowColor: Colors.lightBlueAccent.shade100,
+                elevation: 5.0,
+                child: MaterialButton(
+                  minWidth: 200.0,
+                  height: 42.0,
+                  onPressed: () {
+
+                  },
+                  color: Colors.lightBlueAccent,
+                  child: Text('Registrar', style: TextStyle(color: Colors.white)),
+                ),
+              ),
+            ),
           ],
         ),
       ),

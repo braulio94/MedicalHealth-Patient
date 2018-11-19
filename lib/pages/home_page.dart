@@ -8,8 +8,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-
+    return Scaffold(
+      body: Container(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){},
+        tooltip: 'Adicionar Cartao de Vacina',
+        child: Icon(Icons.add),
+      ),
     );
   }
 }
