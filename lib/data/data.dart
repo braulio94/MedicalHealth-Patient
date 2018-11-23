@@ -7,14 +7,29 @@ List<String> filiation = [
   'da Mae',
 ];
 
-List<String> location = [
-  'Pais',
-  'Provincia',
-  'Municipio',
-  'Distrito'
-  'Rua',
-  'Numero',
+List<String> provinces = [
+  'Selecione a Provincia'
+  'Luanda',
+  'Benguela',
+  'Cabinda',
+  'Huambo',
+  'Malange',
+  'Bie',
+  'Namibe',
+  'Moxico',
+  'Cunene',
+  'Lunda Norte',
+  'Lunda Sul',
+  'Kuanza Norte',
+  'Kwanza Sul',
+  'Zaire',
+  'Bengo',
+  'Uige',
+  'Kuando Kubango',
+  'Huila',
 ];
+
+
 
 List<VaccineType> vaccines = [
   VaccineType(

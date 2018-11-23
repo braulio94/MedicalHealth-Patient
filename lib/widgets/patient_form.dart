@@ -68,14 +68,11 @@ class PatientForm extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
         DropdownButtonFormField(
-          items: [
-            DropdownMenuItem(
-              child: Text('Provincia'),
-            ),
-            DropdownMenuItem(
-              child: Text('Luanda'),
-            ),
-          ],
+          items: provinces.map((province){
+            return DropdownMenuItem(
+              child: Text(province),
+            );
+          }).toList(),
         ),
         DropdownButtonFormField(
           items: [
