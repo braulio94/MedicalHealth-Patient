@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
+import 'package:medical_health_patient/data/data.dart';
+import 'package:medical_health_patient/pages/qr_code_viewer_page.dart';
+import 'package:medical_health_patient/widgets/vaccine_interval.dart';
 
 class VaccineCardPage extends StatefulWidget {
   @override
@@ -9,53 +12,47 @@ class VaccineCardPage extends StatefulWidget {
 class _VaccineCardPageState extends State<VaccineCardPage> {
   @override
   Widget build(BuildContext context) {
-    int i = 0;
-    return Scaffold(
+    return new Scaffold(
       appBar: AppBar(
         title: Text('Cartao de Vacina'),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context){
+                  return QRCodeViewerPage();
+                }
+              ));
+            },
             tooltip: 'Codigo QR',
             icon: Icon(Icons.gradient),
           ),
         ],
       ),
-      body: CustomScrollView(
-        slivers: List.generate(i += 10, (sliverIndex) {
-          sliverIndex += i;
-          return SliverStickyHeader(
-            overlapsContent: true,
-            header: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-              child: Align(
+      body: new Builder(builder: (BuildContext context) {
+        return new CustomScrollView(
+          slivers: vaccines.map((vaccine){
+            return SliverStickyHeader(
+              header: Container(
+                height: 60.0,
+                color: Colors.lightBlue,
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
                 alignment: Alignment.centerLeft,
-                child: new SizedBox(
-                  height: 50.0,
-                  width: 90.0,
-                  child: new Text('Vaccina #$sliverIndex',
-                      textAlign: TextAlign.right),
+                child: new Text(
+                  vaccine.name,
+                  style: const TextStyle(color: Colors.white),
                 ),
               ),
-            ),
-            sliver: SliverPadding(
-              padding: EdgeInsets.only(left: 100.0),
-              sliver: SliverGrid(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 4.0,
-                    mainAxisSpacing: 4.0,
-                    childAspectRatio: 1.0),
-                delegate: SliverChildBuilderDelegate(
-                  (context, i) => Container(),
-                  childCount: 12,
+              sliver: SliverList(
+                delegate: new SliverChildBuilderDelegate(
+                  (context, i) => VaccineInterval(interval: vaccine.intervals[i], color: vaccine.color),
+                  childCount: vaccine.intervals.length,
                 ),
               ),
-            ),
-          );
-        }),
-      ),
+            );
+          }).toList()
+        );
+      }),
     );
   }
 }

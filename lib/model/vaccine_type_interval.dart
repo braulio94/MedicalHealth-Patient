@@ -1,19 +1,22 @@
+import 'package:flutter/foundation.dart';
 import 'package:medical_health_patient/model/doctor.dart';
 import 'package:medical_health_patient/model/location.dart';
 
-class VaccineInterval {
+class VaccineTypeInterval {
   int id, vaccineId;
+  String name;
   Doctor doctor;
   Location location;
   bool isGiven;
   DateTime dateGiven;
 
-  VaccineInterval({
-    this.id,
+  VaccineTypeInterval({
+    @required this.id,
     this.vaccineId,
+    @required this.name,
     this.doctor,
     this.location,
-    this.isGiven,
+    @required this.isGiven,
     this.dateGiven
   });
 }

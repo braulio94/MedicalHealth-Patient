@@ -1,8 +1,8 @@
-class VaccineCard {
+class Vaccine {
   int id, patientId, vaccineId;
   String qrCode;
 
-  VaccineCard({
+  Vaccine({
     this.id,
     this.patientId,
     this.vaccineId,

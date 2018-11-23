@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medical_health_patient/pages/form_page.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -23,22 +24,19 @@ class LoginPage extends StatelessWidget {
       ),
     );
 
-    final loginButton = Padding(
-      padding: EdgeInsets.symmetric(vertical: 16.0),
-      child: Material(
-        borderRadius: BorderRadius.circular(30.0),
-        shadowColor: Colors.lightBlueAccent.shade100,
-        elevation: 5.0,
-        child: MaterialButton(
-          minWidth: 200.0,
-          height: 42.0,
-          onPressed: () {
-
-          },
-          color: Colors.lightBlueAccent,
-          child: Text('Entrar', style: TextStyle(color: Colors.white)),
-        ),
-      ),
+    final loginButton = MaterialButton(
+      padding: EdgeInsets.symmetric(horizontal: 100.0),
+      minWidth: 100.0,
+      height: 42.0,
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(
+            builder: (context){
+             return FormPage();
+            }
+        ));
+      },
+      color: Colors.lightBlueAccent,
+      child: Text('Entrar', style: TextStyle(color: Colors.white)),
     );
 
     return Scaffold(
