@@ -57,9 +57,10 @@ class _FormPageState extends State<FormPage> {
             steps: [
               Step(title: Text('Nome'), content: PatientForm.name(focusNode: _focusNode), isActive: currStep == 0 ? true : false),
               Step(title: Text('Sexo'), content: PatientForm.gender(focusNode: _focusNode, gender: Gender.Male), isActive: currStep == 1 ? true : false),
-              Step(title: Text('Afiliacao'), content: PatientForm.filiation(focusNode: _focusNode), isActive: currStep == 2 ? true : false),
-              Step(title: Text('Morada'), content: PatientForm.location(focusNode: _focusNode), isActive: currStep == 3 ? true : false),
-              Step(title: Text('Morada'), content: PatientForm.phoneNumber(focusNode: _focusNode), isActive: currStep == 4 ? true : false),
+              Step(title: Text('Data de Nascimento'), content: PatientForm.birthDate(focusNode: _focusNode), isActive: currStep == 2 ? true : false),
+              Step(title: Text('Afiliacao'), content: PatientForm.filiation(focusNode: _focusNode), isActive: currStep == 3 ? true : false),
+              Step(title: Text('Morada'), content: PatientForm.location(focusNode: _focusNode), isActive: currStep == 4 ? true : false),
+              Step(title: Text('Numero de telefone'), content: PatientForm.phoneNumber(focusNode: _focusNode), isActive: currStep == 5 ? true : false),
             ],
             type: StepperType.vertical,
             currentStep: this.currStep,
