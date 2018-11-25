@@ -41,23 +41,24 @@ class PatientForm extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            padding: EdgeInsets.all(8.0),
+            padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 8.0),
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.black54),
+              border: Border(top: BorderSide(color: Colors.black54), bottom: BorderSide(color: Colors.black54)),
             ),
               child: Text('Dia'),
           ),
           Container(
-            padding: EdgeInsets.all(8.0),
+            padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 8.0),
+            margin: EdgeInsets.symmetric(horizontal: 8.0),
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.black54),
+              border: Border(top: BorderSide(color: Colors.black54), bottom: BorderSide(color: Colors.black54)),
             ),
             child: Text('Mes'),
           ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 8.0),
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.black54),
+              border: Border(top: BorderSide(color: Colors.black54), bottom: BorderSide(color: Colors.black54)),
             ),
             child: Text('Ano'),
           ),
@@ -101,14 +102,11 @@ class PatientForm extends StatelessWidget {
           }).toList(),
         ),
         DropdownButtonFormField(
-          items: [
-            DropdownMenuItem(
-              child: Text('Municipio'),
-            ),
-            DropdownMenuItem(
-              child: Text('Kilamba Kiaxi'),
-            ),
-          ],
+          items: municipalities.map((municipality){
+            return DropdownMenuItem(
+              child: Text(municipality),
+            );
+          }).toList()
         ),
         TextFormField(
           keyboardType: TextInputType.text,
