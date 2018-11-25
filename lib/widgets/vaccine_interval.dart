@@ -12,20 +12,23 @@ class VaccineInterval extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(16.0),
-      child: Container(
-        height: 100.0,
-        width: 100.0,
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            Text(interval.name),
-            Divider(height: 2.0, color: color),
-            interval.isGiven ? Text('Data: ${interval.dateGiven}') : Container(),
-            interval.isGiven ? Text('Local: ${interval.location.name}') : Container(),
-            interval.isGiven ? Text('Doutor: ${interval.doctor.name}') : Container(),
-          ],
+    return Container(
+      width: 200.0,
+      child: Card(
+        margin: EdgeInsets.all(16.0),
+        child: Container(
+          height: 100.0,
+          width: 100.0,
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              Text(interval.name),
+              Divider(height: 2.0, color: color),
+              interval.isGiven ? Text('Data: ${interval.dateGiven}') : Container(),
+              interval.isGiven ? Text('Local: ${interval.location.name}') : Container(),
+              interval.isGiven ? Text('Doutor: ${interval.doctor.name}') : Container(),
+            ],
+          ),
         ),
       ),
     );

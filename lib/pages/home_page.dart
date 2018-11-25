@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medical_health_patient/pages/form_page.dart';
 import 'package:medical_health_patient/widgets/vaccine_card.dart';
 
 class HomePage extends StatefulWidget {
@@ -36,7 +37,6 @@ class _HomePageState extends State<HomePage> {
       onWillPop: _exitApp,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Meu Codigo QR'),
           leading: Container(),
         ),
         body: ListView(
@@ -47,7 +47,11 @@ class _HomePageState extends State<HomePage> {
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.pinkAccent,
           onPressed: (){
-
+            Navigator.push(context, MaterialPageRoute(
+              builder: (context){
+                return FormPage();
+              }
+            ));
           },
           tooltip: 'Adicionar Cartao de Vacina',
           child: Icon(Icons.add),

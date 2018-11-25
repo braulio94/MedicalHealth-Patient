@@ -43,10 +43,16 @@ class _VaccineCardPageState extends State<VaccineCardPage> {
                   style: const TextStyle(color: Colors.white),
                 ),
               ),
-              sliver: SliverList(
-                delegate: new SliverChildBuilderDelegate(
-                  (context, i) => VaccineInterval(interval: vaccine.intervals[i], color: vaccine.color),
-                  childCount: vaccine.intervals.length,
+              sliver: SliverToBoxAdapter(
+                child: SizedBox(
+                  height: 300.0,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: vaccine.intervals.length,
+                    itemBuilder: (context, index){
+                      return VaccineInterval(interval: vaccine.intervals[index], color: vaccine.color);
+                    },
+                  ),
                 ),
               ),
             );

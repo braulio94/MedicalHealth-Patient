@@ -8,7 +8,6 @@ class PatientForm extends StatelessWidget {
     'Nome',
     'Data de Nascimento',
     'Sexo',
-    'Nacionalidade',
     'Afiliacao',
     'Morada',
     'Numero de telefone'
@@ -18,7 +17,6 @@ class PatientForm extends StatelessWidget {
   final FocusNode focusNode;
 
   PatientForm.name({this.focusNode}) : content = TextFormField(
-    focusNode: focusNode,
     keyboardType: TextInputType.text,
     autocorrect: false,
     onSaved: (String value) {
@@ -147,7 +145,6 @@ class PatientForm extends StatelessWidget {
             Container(
               margin: EdgeInsets.symmetric(vertical: 10.0),
               child: TextFormField(
-                focusNode: focusNode,
                 keyboardType: TextInputType.text,
                 autocorrect: false,
                 onSaved: (String value) {
@@ -173,7 +170,6 @@ class PatientForm extends StatelessWidget {
 
   PatientForm.phoneNumber({this.focusNode}) : content = Container(
     child: TextFormField(
-      focusNode: focusNode,
       keyboardType: TextInputType.number,
       autocorrect: false,
       onSaved: (String value) {
