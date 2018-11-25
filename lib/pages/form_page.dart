@@ -12,24 +12,7 @@ class FormPage extends StatefulWidget {
 
 class _FormPageState extends State<FormPage> {
   int currStep = 0;
-  static var _focusNode = FocusNode();
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   Patient patient;
-
-  @override
-  void initState() {
-    super.initState();
-    _focusNode.addListener(() {
-      setState(() {});
-      print('Has focus: $_focusNode.hasFocus');
-    });
-  }
-
-  @override
-  void dispose() {
-    _focusNode.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
