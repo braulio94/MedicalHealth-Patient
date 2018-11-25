@@ -67,8 +67,6 @@ class _FormPageState extends State<FormPage> {
             setState(() {
               if (currStep < PatientForm.fields.length - 1) {
                 currStep = currStep + 1;
-              } else {
-                currStep = 0;
               }
             });
           },
@@ -112,4 +110,9 @@ class _FormPageState extends State<FormPage> {
       ],
     );
   }
+}
+
+class FormPageValidator {
+  Patient patient;
+
 }
