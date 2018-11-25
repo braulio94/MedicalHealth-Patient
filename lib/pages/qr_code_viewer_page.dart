@@ -15,7 +15,6 @@ class QRCodeViewerPage extends StatelessWidget {
         child: Center(
           child: QrImage(
             data: _dataString,
-            onError: (ex) {},
           ),
         ),
       ),
