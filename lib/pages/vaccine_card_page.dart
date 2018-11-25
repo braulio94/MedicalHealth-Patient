@@ -39,6 +39,8 @@ class _VaccineCardPageState extends State<VaccineCardPage> {
                 padding: EdgeInsets.symmetric(horizontal: 16.0),
                 alignment: Alignment.centerLeft,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Text(
                       vaccine.name,
