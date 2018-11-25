@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_cupertino_date_picker/flutter_cupertino_date_picker.dart';
 import 'package:medical_health_patient/data/data.dart';
 import 'package:medical_health_patient/model/gender.dart';
 import 'package:medical_health_patient/model/patient.dart';
@@ -46,7 +47,23 @@ class _FormPageState extends State<FormPage> {
                 isActive: currStep == 1 ? true : false),
             Step(
                 title: Text('Data de Nascimento'),
-                content: PatientForm.birthDate(),
+                content: PatientForm.birthDate(
+                  onTap: (){
+                    DatePicker.showDatePicker(
+                        context,
+                        showTitleActions: true,
+                        locale: 'pt-br',
+                        minYear: 1970,
+                        maxYear: 2020,
+                        initialYear: DateTime.now().year,
+                        initialMonth: DateTime.now().month,
+                        initialDate: DateTime.now().day,
+                        dateFormat: 'dd-mm-yyyy',
+                        onChanged: (int year, int month, int date) { },
+                        onConfirm: (year, month, date) {},
+                    );
+                  },
+                ),
                 isActive: currStep == 2 ? true : false),
             Step(
                 title: Text('Afiliacao'),

@@ -38,9 +38,17 @@ class _VaccineCardPageState extends State<VaccineCardPage> {
                 color: Colors.lightBlue,
                 padding: EdgeInsets.symmetric(horizontal: 16.0),
                 alignment: Alignment.centerLeft,
-                child: new Text(
-                  vaccine.name,
-                  style: const TextStyle(color: Colors.white),
+                child: Column(
+                  children: <Widget>[
+                    Text(
+                      vaccine.name,
+                      style: TextStyle(color: Colors.white, fontSize: 20.0),
+                    ),
+                    new Text(
+                      vaccine.abr,
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                  ],
                 ),
               ),
               sliver: SliverToBoxAdapter(

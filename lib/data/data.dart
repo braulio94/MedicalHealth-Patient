@@ -29,6 +29,27 @@ List<String> provinces = [
   'Huila',
 ];
 
+List<List<String>> provinceMunicipalitiesList = [
+  municipalities,
+  municipalities2,
+  municipalities3,
+  municipalities4,
+  municipalities5,
+  municipalities6,
+  municipalities7,
+  municipalities8,
+  municipalities9,
+  municipalities10,
+  municipalities11,
+  municipalities12,
+  municipalities13,
+  municipalities14,
+  municipalities15,
+  municipalities16,
+  municipalities17,
+  municipalities18,
+];
+
 List<String> municipalities = [
   'Selecionar Municipio',
   'Belas',

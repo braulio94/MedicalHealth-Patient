@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:medical_health_patient/data/data.dart';
 import 'package:medical_health_patient/model/gender.dart';
+import 'package:flutter_cupertino_date_picker/flutter_cupertino_date_picker.dart';
 
 class PatientForm extends StatelessWidget {
 
@@ -34,8 +35,35 @@ class PatientForm extends StatelessWidget {
         TextStyle(decorationStyle: TextDecorationStyle.solid)),
   );
 
-  PatientForm.birthDate({this.focusNode}) : content = Container(
-
+  PatientForm.birthDate({this.focusNode, BuildContext context, VoidCallback onTap}) : content = Container(
+    child: GestureDetector(
+      onTap: onTap,
+      child: Row(
+        children: [
+          Container(
+            padding: EdgeInsets.all(8.0),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.black54),
+            ),
+              child: Text('Dia'),
+          ),
+          Container(
+            padding: EdgeInsets.all(8.0),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.black54),
+            ),
+            child: Text('Mes'),
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 8.0),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.black54),
+            ),
+            child: Text('Ano'),
+          ),
+        ],
+      ),
+    )
   );
 
   PatientForm.gender({this.focusNode, Gender gender}) : content = Container(
