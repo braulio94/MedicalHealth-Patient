@@ -43,18 +43,24 @@ class RegisterPage extends StatelessWidget {
             SizedBox(height: 24.0),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                borderRadius: BorderRadius.circular(30.0),
-                shadowColor: Colors.lightBlueAccent.shade100,
-                elevation: 5.0,
-                child: MaterialButton(
-                  minWidth: 200.0,
-                  height: 42.0,
-                  onPressed: () {
-
-                  },
-                  color: Colors.lightBlueAccent,
-                  child: Text('Registrar', style: TextStyle(color: Colors.white)),
+              child: Container(
+                width: double.infinity,
+                margin: EdgeInsets.symmetric(horizontal: 50.0, vertical: 16.0),
+                height: 50.0,
+                child: ClipRRect(
+                  borderRadius: new BorderRadius.circular(50.0),
+                  child: MaterialButton(
+                      minWidth: 70.0,
+                      onPressed: (){
+                        //TODO add to cart action
+                      },
+                      color: Colors.grey[900],
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text('Registrar', style: TextStyle(color: Colors.white)),
+                        ],
+                      )),
                 ),
               ),
             ),

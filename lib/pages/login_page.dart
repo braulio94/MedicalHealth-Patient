@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:medical_health_patient/pages/form_page.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -24,29 +23,36 @@ class LoginPage extends StatelessWidget {
       ),
     );
 
-    final loginButton = MaterialButton(
-      padding: EdgeInsets.symmetric(horizontal: 100.0),
-      minWidth: 100.0,
-      height: 42.0,
-      onPressed: () {
-        Navigator.push(context, MaterialPageRoute(
-            builder: (context){
-             return FormPage();
-            }
-        ));
-      },
-      color: Colors.lightBlueAccent,
-      child: Text('Entrar', style: TextStyle(color: Colors.white)),
+    final loginButton = Container(
+      width: double.infinity,
+      margin: EdgeInsets.symmetric(horizontal: 50.0, vertical: 16.0),
+      height: 50.0,
+      child: ClipRRect(
+        borderRadius: new BorderRadius.circular(50.0),
+        child: MaterialButton(
+            minWidth: 70.0,
+            onPressed: (){
+              //TODO add to cart action
+            },
+            color: Colors.grey[900],
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text('Entrar', style: TextStyle(color: Colors.white)),
+              ],
+            )),
+      ),
     );
 
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Center(
+      body: Container(
+        alignment: Alignment.center,
+        margin: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
         child: ListView(
-          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
           padding: EdgeInsets.only(left: 24.0, right: 24.0),
-          children: <Widget>[
-            Text('Medical Health - Patient'),
+          children: [
             SizedBox(height: 48.0),
             email,
             SizedBox(height: 8.0),
@@ -59,7 +65,7 @@ class LoginPage extends StatelessWidget {
                 style: TextStyle(color: Colors.black54),
               ),
               onPressed: () {},
-            )
+            ),
           ],
         ),
       ),
