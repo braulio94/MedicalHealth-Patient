@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 import 'package:medical_health_patient/data/data.dart';
+import 'package:medical_health_patient/data/medical_health_icons.dart';
 import 'package:medical_health_patient/pages/qr_code_viewer_page.dart';
 import 'package:medical_health_patient/widgets/vaccine_interval.dart';
 
@@ -25,7 +26,7 @@ class _VaccineCardPageState extends State<VaccineCardPage> {
               ));
             },
             tooltip: 'Codigo QR',
-            icon: Icon(Icons.gradient),
+            icon: Icon(MedicalHealthIcon.qrcode),
           ),
         ],
       ),
