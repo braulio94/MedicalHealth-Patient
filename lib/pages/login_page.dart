@@ -44,30 +44,26 @@ class LoginPage extends StatelessWidget {
       ),
     );
 
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Container(
-        alignment: Alignment.center,
-        margin: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-        child: ListView(
-          physics: NeverScrollableScrollPhysics(),
-          padding: EdgeInsets.only(left: 24.0, right: 24.0),
-          children: [
-            SizedBox(height: 48.0),
-            email,
-            SizedBox(height: 8.0),
-            password,
-            SizedBox(height: 24.0),
-            loginButton,
-            FlatButton(
-              child: Text(
-                'Esqueceu palavra-passe?',
-                style: TextStyle(color: Colors.black54),
-              ),
-              onPressed: () {},
+    return Center(
+      child: ListView(
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
+        padding: EdgeInsets.only(left: 24.0, right: 24.0),
+        children: [
+          SizedBox(height: 48.0),
+          email,
+          SizedBox(height: 8.0),
+          password,
+          SizedBox(height: 24.0),
+          loginButton,
+          FlatButton(
+            child: Text(
+              'Esqueceu palavra-passe?',
+              style: TextStyle(color: Colors.black54),
             ),
-          ],
-        ),
+            onPressed: () {},
+          ),
+        ],
       ),
     );
   }

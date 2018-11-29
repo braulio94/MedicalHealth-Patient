@@ -23,20 +23,28 @@ class _AuthPageState extends State<AuthPage> {
       body: Stack(
         children: <Widget>[
           PageView(
+            physics: NeverScrollableScrollPhysics(),
             controller: _pageController,
             children: [
               LoginPage(),
               RegisterPage(),
             ],
           ),
-          Center(
+          Container(
+            margin: EdgeInsets.only(bottom: 50.0),
+            alignment: Alignment.bottomRight,
             child: FlatButton(
               child: Text(
-                _pageController.initialPage == 1.0 ? 'Regitrar-se' : 'Entrar',
+                _pageController.initialPage == 0 ? 'Regitrar-se' : 'Entrar',
+                key: ValueKey('Auth-Swicth-Button'),
                 style: TextStyle(color: Colors.black54),
               ),
               onPressed: () {
-                _pageController.page == 1.0 ? _pageController.jumpToPage(1) : _pageController.jumpToPage(2);
+                if(_pageController.page == 1){
+                  _pageController.jumpToPage(0);
+                } else if(_pageController.page == 0){
+                  _pageController.jumpToPage(1);
+                }
               },
             ),
           ),
