@@ -1,6 +1,9 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:medical_health_patient/model/patient.dart';
 import 'package:medical_health_patient/pages/form_page.dart';
 import 'package:medical_health_patient/widgets/vaccine_card.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -8,6 +11,28 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  Firestore fireStore;
+
+  @override
+  void initState() {
+    super.initState();
+    _initFireStore();
+  }
+
+  void _initFireStore() async {
+    final FirebaseApp app = await FirebaseApp.configure(
+      name: 'Medical Health',
+      options: const FirebaseOptions(
+        googleAppID: '1:812242125853:android:6a53762441e7668c',
+        gcmSenderID: '812242125853',
+        apiKey: 'AIzaSyAxIAb3qXF_SYHC8GSm9BJ5keOXAhMTams',
+        projectID: 'medical-health-doctor',
+      ),
+    );
+    fireStore = Firestore(app: app);
+    await fireStore.settings(timestampsInSnapshotsEnabled: true);
+  }
 
   Future<bool> _exitApp() async {
     return showDialog(
@@ -39,10 +64,29 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           leading: Container(),
         ),
-        body: ListView(
-          children: [
-            VaccineCard(),
-          ],
+        body: StreamBuilder<QuerySnapshot>(
+          stream: Firestore.instance.collection('patients').snapshots(),
+          builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            if (snapshot.hasError)
+              return new Text('Error: ${snapshot.error}');
+            switch (snapshot.connectionState) {
+              case ConnectionState.waiting: return new Text('Loading...');
+              default:
+                return new ListView(
+                  children: snapshot.data.documents.map((DocumentSnapshot document) {
+                    var patient = Patient(
+                      age: document['age'],
+                      name: document['name'],
+                      sex: document['sex'],
+                      //vaccineCardId: document['vaccineCardId'],
+                      nationality: document['nationality'],
+                      birthDate: document['birthDate'],
+                    );
+                    return VaccineCard(patient: patient);
+                  }).toList(),
+                );
+            }
+          },
         ),
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.pinkAccent,

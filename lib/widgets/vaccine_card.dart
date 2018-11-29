@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:medical_health_patient/model/patient.dart';
 import 'package:medical_health_patient/pages/qr_code_viewer_page.dart';
 import 'package:medical_health_patient/pages/vaccine_card_page.dart';
 
 class VaccineCard extends StatelessWidget {
+
+  final Patient patient;
+
+  VaccineCard({this.patient});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,15 +36,27 @@ class VaccineCard extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(topLeft: Radius.circular(5.0), topRight: Radius.circular(5.0)),
-                      color: Colors.pinkAccent,
+                      color: Colors.blue,
                     ),
                     height: 32.0,
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
-                          padding: EdgeInsets.only(right: 16.0),
-                          child: Icon(Icons.pregnant_woman, color: Colors.white),
+                          padding: EdgeInsets.only(left: 16.0),
+                          child: Text(patient.name, style: TextStyle(color: Colors.white)),
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Padding(
+                              padding: EdgeInsets.only(right: 4.0),
+                              child: Icon(Icons.pregnant_woman, color: Colors.white),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(right: 16.0),
+                              child: Text('${patient.age}', style: TextStyle(color: Colors.white)),
+                            ),
+                          ],
                         ),
                       ],
                     ),

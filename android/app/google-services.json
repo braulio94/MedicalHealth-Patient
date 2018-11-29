@@ -1,0 +1,86 @@
+{
+  "project_info": {
+    "project_number": "812242125853",
+    "firebase_url": "https://medical-health-doctor.firebaseio.com",
+    "project_id": "medical-health-doctor",
+    "storage_bucket": "medical-health-doctor.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:812242125853:android:59e34dd4258e58b8",
+        "android_client_info": {
+          "package_name": "com.medicalhealth.doctor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "812242125853-0384cnf3ci1pemtp2lnfv6pl060lk8fc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.medicalhealth.doctor",
+            "certificate_hash": "393339be70b4de8fd728f8f3fd252b0fc4bf86f4"
+          }
+        },
+        {
+          "client_id": "812242125853-3feljbff6l5hi1tr4ok0587m8n0ancvf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxIAb3qXF_SYHC8GSm9BJ5keOXAhMTams"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "812242125853-3feljbff6l5hi1tr4ok0587m8n0ancvf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:812242125853:android:6a53762441e7668c",
+        "android_client_info": {
+          "package_name": "com.medicalhealth.medicalhealthpatient"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "812242125853-3feljbff6l5hi1tr4ok0587m8n0ancvf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxIAb3qXF_SYHC8GSm9BJ5keOXAhMTams"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

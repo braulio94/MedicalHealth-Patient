@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medical_health_patient/pages/form_page.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -32,15 +33,14 @@ class LoginPage extends StatelessWidget {
         child: MaterialButton(
             minWidth: 70.0,
             onPressed: (){
-              //TODO add to cart action
+              Navigator.push(context, MaterialPageRoute(
+                  builder: (context){
+                    return FormPage();
+                  }
+              ));
             },
             color: Colors.grey[900],
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text('Entrar', style: TextStyle(color: Colors.white)),
-              ],
-            )),
+            child: Text('Entrar', style: TextStyle(color: Colors.white))),
       ),
     );
 
@@ -61,7 +61,7 @@ class LoginPage extends StatelessWidget {
             loginButton,
             FlatButton(
               child: Text(
-                'Esqueceu palavra-passa?',
+                'Esqueceu palavra-passe?',
                 style: TextStyle(color: Colors.black54),
               ),
               onPressed: () {},

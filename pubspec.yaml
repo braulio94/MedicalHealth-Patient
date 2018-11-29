@@ -16,7 +16,7 @@ dependencies:
   flutter:
     sdk: flutter
   sqflite: any
-  path_provider: any
+#  path_provider: any
   flutter_sticky_header: ^0.3.4
   cloud_firestore: ^0.8.2+3
   validate: 1.7.0
