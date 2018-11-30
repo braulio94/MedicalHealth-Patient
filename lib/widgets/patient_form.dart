@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:medical_health_patient/data/data.dart';
 import 'package:medical_health_patient/model/gender.dart';
 import 'package:flutter_cupertino_date_picker/flutter_cupertino_date_picker.dart';
+import 'package:medical_health_patient/model/patient.dart';
 
 class PatientForm extends StatelessWidget {
 
@@ -16,24 +17,33 @@ class PatientForm extends StatelessWidget {
 
   final Widget content;
   final FocusNode focusNode;
+  static GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  static GlobalKey<FormFieldState<String>> _nameFormFieldKey = GlobalKey<FormFieldState<String>>();
 
-  PatientForm.name({this.focusNode}) : content = TextFormField(
-    keyboardType: TextInputType.text,
-    autocorrect: false,
-    onSaved: (String value) {
+  PatientForm.name({this.focusNode}) : content = Form(
+    key: _formKey,
+      child: TextFormField(
+        key: _nameFormFieldKey,
+        keyboardType: TextInputType.text,
+        autocorrect: false,
+        onSaved: (String value) {
 
-    },
-    maxLines: 1,
-    validator: (value) {
-      if (value.isEmpty || value.length < 1) {
-        return 'Escreve teu nome';
-      }
-    },
-    decoration: InputDecoration(
-        hintText: 'Nome completo',
-        labelStyle:
-        TextStyle(decorationStyle: TextDecorationStyle.solid)),
-  );
+        },
+        maxLines: 1,
+        validator: (value) {
+          if (value.isEmpty || value.length < 1) {
+            return 'Campo nao pode estar vasio';
+          } else if (value.contains(new RegExp(r'[1-9]'))){
+            return 'Nao pode conter numeros';
+          } else if(value.contains(',') | value.contains('/') | value.contains('.')){
+            return 'Nao pode conter simbolos';
+          }
+        },
+        decoration: InputDecoration(
+            hintText: 'Nome completo',
+            labelStyle:
+            TextStyle(decorationStyle: TextDecorationStyle.solid)),
+      ));
 
   PatientForm.birthDate({this.focusNode, BuildContext context, VoidCallback onTap}) : content = Container(
     child: GestureDetector(
@@ -217,5 +227,30 @@ class PatientForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return content;
+  }
+}
+
+class PatientFormValidator {
+
+  final int step;
+  final Function(bool valid, Patient patient) validator;
+
+  PatientFormValidator({
+    this.step,
+    this.validator
+  }) {
+    _validation();
+    print('');
+  }
+
+  void _validation(){
+    switch(step){
+      case 0:
+        if(PatientForm._formKey.currentState.validate()){
+          String name = PatientForm._nameFormFieldKey.currentState.value;
+          validator(true, Patient(name: name));
+        }
+        break;
+    }
   }
 }

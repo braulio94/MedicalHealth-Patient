@@ -83,11 +83,20 @@ class _FormPageState extends State<FormPage> {
         type: StepperType.vertical,
         currentStep: this.currStep,
         onStepContinue: () {
-          setState(() {
-            if (currStep < PatientForm.fields.length - 1) {
-              currStep = currStep + 1;
-            }
-          });
+          PatientFormValidator(
+              step: currStep,
+              validator: (bool valid, Patient patient){
+                this.patient = patient;
+                if(valid){
+                  print('FormField Result: ${patient.name}');
+                  setState(() {
+                    if (currStep < PatientForm.fields.length - 1) {
+                      currStep = currStep + 1;
+                    }
+                  });
+                }
+              }
+          );
         },
         onStepCancel: () {
           setState(() {
@@ -96,11 +105,6 @@ class _FormPageState extends State<FormPage> {
             } else {
               currStep = 0;
             }
-          });
-        },
-        onStepTapped: (step) {
-          setState(() {
-            currStep = step;
           });
         },
       ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medical_health_patient/pages/form_page.dart';
+import 'package:medical_health_patient/pages/home_page.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -35,11 +35,11 @@ class LoginPage extends StatelessWidget {
             onPressed: (){
               Navigator.push(context, MaterialPageRoute(
                   builder: (context){
-                    return FormPage();
+                    return HomePage();
                   }
               ));
             },
-            color: Colors.grey[900],
+            color: Colors.pinkAccent,
             child: Text('Entrar', style: TextStyle(color: Colors.white))),
       ),
     );

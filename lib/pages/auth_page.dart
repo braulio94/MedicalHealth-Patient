@@ -34,10 +34,11 @@ class _AuthPageState extends State<AuthPage> {
             margin: EdgeInsets.only(bottom: 50.0),
             alignment: Alignment.bottomRight,
             child: FlatButton(
+              color: Colors.black54,
               child: Text(
                 _pageController.initialPage == 0 ? 'Regitrar-se' : 'Entrar',
                 key: ValueKey('Auth-Swicth-Button'),
-                style: TextStyle(color: Colors.black54),
+                style: TextStyle(color: Colors.white),
               ),
               onPressed: () {
                 if(_pageController.page == 1){

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medical_health_patient/pages/form_page.dart';
 
 class RegisterPage extends StatelessWidget {
   @override
@@ -48,9 +49,13 @@ class RegisterPage extends StatelessWidget {
               child: MaterialButton(
                   minWidth: 70.0,
                   onPressed: (){
-                    //TODO add to cart action
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (context){
+                          return FormPage();
+                        }
+                    ));
                   },
-                  color: Colors.grey[900],
+                  color: Colors.pinkAccent,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
