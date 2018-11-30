@@ -3,6 +3,7 @@ import 'package:medical_health_patient/data/data.dart';
 import 'package:medical_health_patient/model/gender.dart';
 import 'package:flutter_cupertino_date_picker/flutter_cupertino_date_picker.dart';
 import 'package:medical_health_patient/model/patient.dart';
+import 'package:medical_health_patient/pages/form_page.dart';
 
 class PatientForm extends StatelessWidget {
 
@@ -17,13 +18,15 @@ class PatientForm extends StatelessWidget {
 
   final Widget content;
   final FocusNode focusNode;
-  static GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  static GlobalKey<FormFieldState<String>> _nameFormFieldKey = GlobalKey<FormFieldState<String>>();
+  static GlobalKey<FormState> nameFormKey = GlobalKey<FormState>();
+  static GlobalKey<FormFieldState<String>> nameFormFieldKey = GlobalKey<FormFieldState<String>>();
+  static Gender genderState = Gender.Male;
 
   PatientForm.name({this.focusNode}) : content = Form(
-    key: _formKey,
+    key: nameFormKey,
+      autovalidate: true,
       child: TextFormField(
-        key: _nameFormFieldKey,
+        key: nameFormFieldKey,
         keyboardType: TextInputType.text,
         autocorrect: false,
         onSaved: (String value) {
@@ -45,56 +48,62 @@ class PatientForm extends StatelessWidget {
             TextStyle(decorationStyle: TextDecorationStyle.solid)),
       ));
 
-  PatientForm.birthDate({this.focusNode, BuildContext context, VoidCallback onTap}) : content = Container(
+  PatientForm.birthDate({this.focusNode, BuildContext context, VoidCallback onTap, String day, String month, String year, bool isDateSelected}) : content = Container(
     child: GestureDetector(
       onTap: onTap,
-      child: Row(
-        children: [
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 8.0),
-            decoration: BoxDecoration(
-              border: Border(top: BorderSide(color: Colors.black54), bottom: BorderSide(color: Colors.black54)),
-            ),
-              child: Text('Dia'),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Row(
+            children: [
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                decoration: BoxDecoration(
+                  border: Border(top: BorderSide(color: Colors.black54), bottom: BorderSide(color: Colors.black54)),
+                ),
+                  child: Text(day),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 8.0),
+                margin: EdgeInsets.symmetric(horizontal: 8.0),
+                decoration: BoxDecoration(
+                  border: Border(top: BorderSide(color: Colors.black54), bottom: BorderSide(color: Colors.black54)),
+                ),
+                child: Text(month),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                decoration: BoxDecoration(
+                  border: Border(top: BorderSide(color: Colors.black54), bottom: BorderSide(color: Colors.black54)),
+                ),
+                child: Text(year),
+              ),
+            ],
           ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 8.0),
-            margin: EdgeInsets.symmetric(horizontal: 8.0),
-            decoration: BoxDecoration(
-              border: Border(top: BorderSide(color: Colors.black54), bottom: BorderSide(color: Colors.black54)),
-            ),
-            child: Text('Mes'),
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 8.0),
-            decoration: BoxDecoration(
-              border: Border(top: BorderSide(color: Colors.black54), bottom: BorderSide(color: Colors.black54)),
-            ),
-            child: Text('Ano'),
-          ),
+          isDateSelected ? Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: Text('Selecione uma data', style: TextStyle(fontSize: 11, color: Colors.red)),
+          ) : Container(),
         ],
       ),
-    )
+    ),
   );
 
-  PatientForm.gender({this.focusNode, Gender gender}) : content = Container(
+  PatientForm.gender({this.focusNode, ValueChanged<Gender> onChanged}) : content = Container(
     child: Column(
       children: <Widget>[
         RadioListTile<Gender>(
           title: Text('Maculinno'),
           value: Gender.Male,
-          groupValue: gender,
-          onChanged: (value) {
-
-          },
+          groupValue: genderState,
+          onChanged: onChanged,
         ),
         RadioListTile<Gender>(
           title: Text('Feminino'),
           value: Gender.Female,
-          groupValue: gender,
-          onChanged: (value) {
-
-          },
+          groupValue: genderState,
+          selected: genderState == Gender.Female ? true : false,
+          onChanged: onChanged,
         ),
       ],
     )
@@ -227,30 +236,5 @@ class PatientForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return content;
-  }
-}
-
-class PatientFormValidator {
-
-  final int step;
-  final Function(bool valid, Patient patient) validator;
-
-  PatientFormValidator({
-    this.step,
-    this.validator
-  }) {
-    _validation();
-    print('');
-  }
-
-  void _validation(){
-    switch(step){
-      case 0:
-        if(PatientForm._formKey.currentState.validate()){
-          String name = PatientForm._nameFormFieldKey.currentState.value;
-          validator(true, Patient(name: name));
-        }
-        break;
-    }
   }
 }

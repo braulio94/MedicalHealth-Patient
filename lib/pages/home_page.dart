@@ -6,6 +6,10 @@ import 'package:medical_health_patient/widgets/vaccine_card.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HomePage extends StatefulWidget {
+  final Patient patient;
+
+  HomePage({this.patient});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -18,6 +22,14 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     _initFireStore();
+    if(widget.patient != null){
+      _saveNewPatientVaccineCard();
+    }
+  }
+
+
+  void _saveNewPatientVaccineCard() {
+
   }
 
   void _initFireStore() async {

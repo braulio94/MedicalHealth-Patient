@@ -1,12 +1,15 @@
+import 'package:medical_health_patient/model/filiation.dart';
+import 'package:medical_health_patient/model/location.dart';
+
 class Patient {
   int id;
   int vaccineCardId;
   String name;
   int sex;
   DateTime birthDate;
-  int filiationId;
+  Filiation filiation;
   String nationality;
-  int locationId;
+  Location location;
   String phoneNumber;
   int age;
 
@@ -16,12 +19,13 @@ class Patient {
     this.name,
     this.sex,
     this.birthDate,
-    this.filiationId,
+    this.filiation,
     this.nationality,
-    this.locationId,
+    this.location,
     this.phoneNumber,
     this.age
   });
+
 
   Patient copyWith({
     int id,
@@ -29,9 +33,9 @@ class Patient {
     String name,
     int sex,
     DateTime birthDate,
-    int filiationId,
+    Filiation filiation,
     String nationality,
-    int locationId,
+    Location location,
     String phoneNumber,
     int age,
   }) {
@@ -41,11 +45,41 @@ class Patient {
       name: name ?? this.name,
       sex: sex ?? this.sex,
       birthDate: birthDate ?? this.birthDate,
-      filiationId: filiationId ?? this.filiationId,
+      filiation: filiation ?? this.filiation,
       nationality: nationality ?? this.nationality,
-      locationId: locationId ?? this.locationId,
+      location: location ?? this.location,
       phoneNumber: phoneNumber ?? this.phoneNumber,
       age: age ?? this.age,
     );
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+          other is Patient &&
+              runtimeType == other.runtimeType &&
+              id == other.id &&
+              vaccineCardId == other.vaccineCardId &&
+              name == other.name &&
+              sex == other.sex &&
+              birthDate == other.birthDate &&
+              filiation == other.filiation &&
+              nationality == other.nationality &&
+              location == other.location &&
+              phoneNumber == other.phoneNumber &&
+              age == other.age;
+
+  @override
+  int get hashCode =>
+      id.hashCode ^
+      vaccineCardId.hashCode ^
+      name.hashCode ^
+      sex.hashCode ^
+      birthDate.hashCode ^
+      filiation.hashCode ^
+      nationality.hashCode ^
+      location.hashCode ^
+      phoneNumber.hashCode ^
+      age.hashCode;
+
 }
