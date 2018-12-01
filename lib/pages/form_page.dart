@@ -34,11 +34,11 @@ class _FormPageState extends State<FormPage> {
           return Row(
             children: <Widget>[
               FlatButton(
-                onPressed: onStepContinue,
-                child: Text('Continuar'),
+                onPressed: currStep == 5 ? null : onStepContinue,
+                child: Text('Continuar', style: TextStyle(color: currStep == 5 ? Colors.black26 : Colors.pinkAccent)),
               ),
               FlatButton(
-                onPressed: onStepCancel,
+                onPressed: currStep == 0 ? null : onStepCancel,
                 child: Text('Voltar'),
               ),
             ],

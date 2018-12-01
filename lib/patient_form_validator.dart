@@ -42,11 +42,11 @@ class PatientFormValidator {
           String fatherName = Keys.fatherFormFieldKey.currentState.value;
           String motherName = Keys.motherFormFieldKey.currentState.value;
           FormPage.patient.filiation = Filiation(father: fatherName, mother: motherName);
-          if(Keys.filiationMotherNode.hasFocus){
-            Keys.filiationMotherNode.unfocus();
+          if(Keys.motherFocusNode.hasFocus){
+            Keys.motherFocusNode.unfocus();
           }
-          if(Keys.filiationFatherNode.hasFocus){
-            Keys.filiationFatherNode.unfocus();
+          if(Keys.fatherFocusNode.hasFocus){
+            Keys.fatherFocusNode.unfocus();
           }
           validator(true);
         }

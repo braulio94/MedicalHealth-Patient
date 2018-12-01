@@ -14,9 +14,10 @@ class Keys {
 
   ///FocusNodes
   static FocusNode nameFocusNode = FocusNode();
-  static FocusNode filiationMotherNode = FocusNode();
-  static FocusNode filiationFatherNode = FocusNode();
+  static FocusNode motherFocusNode = FocusNode();
+  static FocusNode fatherFocusNode = FocusNode();
   static FocusNode districtFocusNode = FocusNode();
   static FocusNode streetFocusNode = FocusNode();
   static FocusNode houseNumberFocusNode = FocusNode();
+  static FocusNode phoneNumberFocusNode = FocusNode();
 }
