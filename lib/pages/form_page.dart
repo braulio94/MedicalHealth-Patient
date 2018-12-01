@@ -112,6 +112,8 @@ class _FormPageState extends State<FormPage> {
               validator: (bool valid){
                 if(valid){
                   print('FormField Result: ${FormPage.patient.name}');
+                  print('FormField Result: ${FormPage.patient.birthDate}');
+                  print('FormField Result: ${FormPage.patient.filiation}');
                   setState(() {
                     if (currStep < PatientForm.fields.length - 1) {
                       currStep = currStep + 1;

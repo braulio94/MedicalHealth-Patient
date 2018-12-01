@@ -19,7 +19,10 @@ class PatientForm extends StatelessWidget {
   final Widget content;
   final FocusNode focusNode;
   static GlobalKey<FormState> nameFormKey = GlobalKey<FormState>();
+  static GlobalKey<FormState> parentFormKey = GlobalKey<FormState>();
   static GlobalKey<FormFieldState<String>> nameFormFieldKey = GlobalKey<FormFieldState<String>>();
+  static GlobalKey<FormFieldState<String>> fatherFormFieldKey = GlobalKey<FormFieldState<String>>();
+  static GlobalKey<FormFieldState<String>> motherFormFieldKey = GlobalKey<FormFieldState<String>>();
   static Gender genderState = Gender.Male;
 
   PatientForm.name({this.focusNode}) : content = Form(
@@ -183,33 +186,62 @@ class PatientForm extends StatelessWidget {
   );
 
   PatientForm.filiation({this.focusNode}) : content = Container(
-    child: Column(
-      children: filiation.map((parent){
-        return Column(
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 10.0),
-              child: TextFormField(
-                keyboardType: TextInputType.text,
-                autocorrect: false,
-                onSaved: (String value) {
+    child: Form(
+      key: parentFormKey,
+      child: Column(
+        children: [
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 10.0),
+            child: TextFormField(
+              key: fatherFormFieldKey,
+              keyboardType: TextInputType.text,
+              autocorrect: false,
+              onSaved: (String value) {
 
-                },
-                maxLines: 1,
-                validator: (value) {
-                  if (value.isEmpty || value.length < 1) {
-                    return 'Escreve o nome';
-                  }
-                },
-                decoration: InputDecoration(
-                    hintText: 'Nome completo $parent',
-                    labelStyle:
-                    TextStyle(decorationStyle: TextDecorationStyle.solid)),
-              ),
+              },
+              maxLines: 1,
+              validator: (value) {
+                if (value.isEmpty || value.length < 1) {
+                  return 'Campo nao pode estar vasio';
+                } else if (value.contains(new RegExp(r'[1-9]'))){
+                  return 'Nao pode conter numeros';
+                } else if(value.contains(',') | value.contains('/') | value.contains('.')){
+                  return 'Nao pode conter simbolos';
+                }
+              },
+              decoration: InputDecoration(
+                  hintText: 'Nome completo do pai',
+                  labelStyle:
+                  TextStyle(decorationStyle: TextDecorationStyle.solid)),
             ),
-          ],
-        );
-      }).toList(),
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 10.0),
+            child: TextFormField(
+              key: motherFormFieldKey,
+              keyboardType: TextInputType.text,
+              autocorrect: false,
+              onSaved: (String value) {
+
+              },
+              maxLines: 1,
+              validator: (value) {
+                if (value.isEmpty || value.length < 1) {
+                  return 'Campo nao pode estar vasio';
+                } else if (value.contains(new RegExp(r'[1-9]'))){
+                  return 'Nao pode conter numeros';
+                } else if(value.contains(',') | value.contains('/') | value.contains('.')){
+                  return 'Nao pode conter simbolos';
+                }
+              },
+              decoration: InputDecoration(
+                  hintText: 'Nome completo da mae',
+                  labelStyle:
+                  TextStyle(decorationStyle: TextDecorationStyle.solid)),
+            ),
+          ),
+        ],
+      ),
     ),
   );
 
