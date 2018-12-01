@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:medical_health_patient/model/location.dart';
 import 'package:medical_health_patient/model/vaccine_type_interval.dart';
 import 'package:medical_health_patient/model/vaccine_type.dart';
 
-List<String> filiation = [
-  'do Pai',
-  'da Mae',
-];
-
 List<String> provinces = [
-  'Selecione a Provincia',
   'Luanda',
   'Benguela',
   'Cabinda',
@@ -60,6 +55,7 @@ List<String> municipalities = [
   'Icolo e Bengo',
   'Quicama',
 ];
+
 List<String> municipalities2 = [
   'Selecionar Municipio',
   'Lobito',

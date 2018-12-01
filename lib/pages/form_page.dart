@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cupertino_date_picker/flutter_cupertino_date_picker.dart';
 import 'package:flutter_cupertino_date_picker/locale_message.dart';
 import 'package:medical_health_patient/data/data.dart';
-import 'package:medical_health_patient/model/gender.dart';
 import 'package:medical_health_patient/model/patient.dart';
 import 'package:medical_health_patient/pages/home_page.dart';
 import 'package:medical_health_patient/patient_form_validator.dart';
@@ -20,6 +19,7 @@ class _FormPageState extends State<FormPage> {
   String day = 'Dia';
   String month = 'Mes';
   String year = 'Ano';
+  int provinceMunicipalityIndex = -1;
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +97,19 @@ class _FormPageState extends State<FormPage> {
               isActive: currStep == 3 ? true : false),
           Step(
               title: Text('Morada'),
-              content: PatientForm.location(),
+              content: PatientForm.location(
+              provinceMunicipalityIndex,
+              onProvinceSelected: (province) {
+                setState(() {
+                  provinceMunicipalityIndex = provinces.indexOf(province);
+                  PatientForm.provinceName = province;
+                });
+              },
+              onMunicipalitySelected: (municipality){
+                setState(() {
+                  PatientForm.municipalityName = municipality;
+                });
+              }),
               isActive: currStep == 4 ? true : false),
           Step(
               title: Text('Numero de telefone'),
@@ -111,9 +123,6 @@ class _FormPageState extends State<FormPage> {
               step: currStep,
               validator: (bool valid){
                 if(valid){
-                  print('FormField Result: ${FormPage.patient.name}');
-                  print('FormField Result: ${FormPage.patient.birthDate}');
-                  print('FormField Result: ${FormPage.patient.filiation}');
                   setState(() {
                     if (currStep < PatientForm.fields.length - 1) {
                       currStep = currStep + 1;
