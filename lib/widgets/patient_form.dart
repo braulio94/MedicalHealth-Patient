@@ -264,23 +264,27 @@ class PatientForm extends StatelessWidget {
   );
 
   PatientForm.phoneNumber() : content = Container(
-    child: TextFormField(
-      key: Keys.phoneNumberFormFieldKey,
-      focusNode: Keys.phoneNumberFocusNode,
-      keyboardType: TextInputType.number,
-      autocorrect: false,
-      maxLines: 1,
-      validator: (value) {
-        if (value.isEmpty || value.length < 1) {
-          return 'Escreve o numero de telefone';
-        } else if (value.contains(new RegExp(r'[A-Z]'))){
-          return 'Nao pode conter letras';
-        }
-      },
-      decoration: InputDecoration(
-          hintText: 'Numero de telefone',
-          labelStyle:
-          TextStyle(decorationStyle: TextDecorationStyle.solid)),
+    child: Form(
+      key: Keys.phoneNumberFormKey,
+      autovalidate: true,
+      child: TextFormField(
+        key: Keys.phoneNumberFormFieldKey,
+        focusNode: Keys.phoneNumberFocusNode,
+        keyboardType: TextInputType.number,
+        autocorrect: false,
+        maxLines: 1,
+        validator: (value) {
+          if (value.isEmpty || value.length < 1) {
+            return 'Escreve o numero de telefone';
+          } else if (value.contains(new RegExp(r'[A-Z]'))){
+            return 'Nao pode conter letras';
+          }
+        },
+        decoration: InputDecoration(
+            hintText: 'Numero de telefone',
+            labelStyle:
+            TextStyle(decorationStyle: TextDecorationStyle.solid)),
+      ),
     ),
   );
 

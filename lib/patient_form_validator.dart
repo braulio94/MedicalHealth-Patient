@@ -76,6 +76,8 @@ class PatientFormValidator {
         }
         break;
       default:
+        String phoneNumber = Keys.phoneNumberFormFieldKey.currentState.value;
+        FormPage.patient.phoneNumber = phoneNumber;
         if(FormPage.patient.name != null &&
             FormPage.patient.birthDate != null &&
             FormPage.patient.filiation != null &&
@@ -83,7 +85,7 @@ class PatientFormValidator {
             FormPage.patient.phoneNumber != null ){
           validator(true);
         } else {
-
+          print('Salvar dados');
         }
     }
   }

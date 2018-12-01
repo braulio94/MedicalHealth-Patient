@@ -161,6 +161,7 @@ class _FormPageState extends State<FormPage> {
           onPressed: () {
             PatientFormValidator(
                 validator: (bool valid){
+                  print('Salvar dados');
                   if(valid){
                     Navigator.push(context, MaterialPageRoute(builder: (context) {
                       return HomePage(patient: FormPage.patient);
